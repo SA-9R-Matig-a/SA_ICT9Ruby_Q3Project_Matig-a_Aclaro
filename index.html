@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MRT Line 3 </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!--line 7 is for socmed icons in lines 292-293-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+      	body{
+      		font-family: Rockwell;
+          background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/MRT-3_EDSA-Ortigas_2023-10-27.jpg/800px-MRT-3_EDSA-Ortigas_2023-10-27.jpg");
+          background-repeat: no-repeat;
+          background-size: cover;
+      		}
+        #train{
+          height: 200px;
+          width: 400px;
+        }
+        #map{
+          height: 300px;
+          width: 300px;
+        }
+        #gmap {
+          height:300px;
+          width: 300px;
+        }
+        #maps{
+          background-color: #8ff2f7;
+          padding: 10px;
+          border: black solid;
+          border-radius: 10px;
+        }
+        #station, #map{
+          font-size: 35px;
+          text-align: center;
+        }
+        #station-label{
+          background-color: black;
+          color: white;
+        }
+        label, #leavingFrom, #goingTo{
+          width: 320px;
+        }
+        #leavingFrom, #goingTo, #comment{
+          background-color: #8ff2f7;
+        }
+        #card{
+          width: 500px;
+          height: 400px;
+        }
+        #trainsched{
+          width: 500px;
+          height: 600px;
+        }
+        #DisplayAns{
+          font-size: 200px;
+          color: white;
+        }
+        #logo{
+          width: 60px;
+          height: 40px;
+        }
+        .fa-facebook, .fa-instagram {
+          width: 35px;
+          padding: 5px;
+          color: white;
+          background-color: black;
+        }
+        .video-container {
+          display: inline-block;
+          background-color: #8ff2f7;
+          padding: 10px;
+          border: black solid;
+          border-radius: 10px;
+        }
+        .wrapper {
+            text-align: center;
+        }
+        #compute{
+          width: 150px;
+          font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+<!--insert Navbar here-->
+<nav class="navbar navbar-expand-md navbar-light fixed-top" style="background-color: #8ff2f7;">
+
+<div class="container-fluid">
+  <a class="navbar-brand" href="index.html"><img id="logo" src="https://upload.wikimedia.org/wikipedia/tl/c/c6/MetroRail_Transit_Philippines.png"></a>
+
+    <div class="collapse navbar-collapse">
+    
+    <ul class="navbar-nav me-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="#">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="page2.html">Train Schedule</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="page3.html">Help</a>
+      </li>
+    </ul>
+
+    <form class="d-flex" action="index.html">
+            <input class="form-control" type="text" placeholder="search…">
+            <button class="btn btn-warning" type="button">Search</button>
+    </form>
+    </div>
+</div>
+</nav>
+<!-- train sched : https://www.lrta.gov.ph/tickets-and-fares/
+  https://grit.ph/mrt/-->
+    <br><br><br><br>
+   
+
+    <div class="row">
+      <center>
+      <div class="col-md-6" style="background-color: black; color: white; border: white solid; border-radius: 8px;">
+        <script>	
+        document.write("<h2>Fare Calculator</h2>");
+        </script>
+      </div>
+    </center>
+    </div>    
+      
+      <hr>
+      <br>
+
+    <div class="container-fluid" id="main">
+    <div class="row">
+      
+      <div class="col-md-4" id="maps">
+        <center>
+          <p> MRT (Blue) Transit Map</p>
+          <img id="map" src="https://grit.ph/wp-content/uploads/2021/11/MRT-map.png">
+          <br>
+          <br>
+          <p>Interactive Map of Metro Manila</p>
+          <iframe id="gmap" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d18368.145416692427!2d120.98641900656328!3d14.5747332050572!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397c96615e88305%3A0x5a5aa4f48e07f67e!2sTaft%20Ave%2C%20Metro%20Manila!5e0!3m2!1sen!2sph!4v1740663137250!5m2!1sen!2sph" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </center>
+      </div>
+ 
+      <div class="col-md-4">
+          <div class="col-md-12 form-group" id="station">
+          
+          <span id="station-label"><label for="leavingFrom" style="background-color: black; color: white; border: white solid; border-radius: 8px;">LEAVING FROM:</label></span>
+            <br>
+            <br>
+            <center>
+              <select class="form-control" id="leavingFrom">
+                <option value="none">Choose a station...</option>
+                <option value="0">North Ave.</option>
+                <option value="0">Quezon Ave.</option>
+                <option value="0">GMA-Kamuning</option>
+                <option value="3">Araneta Cubao</option>
+                <option value="3">Santos Annapolis</option>
+                <option value="7">Ortigas</option>
+                <option value="7">Shaw Blvd.</option>
+                <option value="7">Boni</option>
+                <option value="11">Guadalupe</option>
+                <option value="11">Buendia</option>
+                <option value="11">Ayala</option>
+                <option value="15">Magallanes</option>
+                <option value="15">Taft Ave.</option>
+              </select>
+            <br>
+          <span id="station-label"><label for="goingTo" style="background-color: black; color: white; border: white solid; border-radius: 8px;">GOING TO:</label></span>
+          <br>
+            <br>
+              <select class="form-control" id="goingTo">
+                <option value="none">Choose a station...</option>
+                <option value="0">North Ave.</option>
+                <option value="0">Quezon Ave.</option>
+                <option value="0">GMA-Kamuning</option>
+                <option value="3">Araneta Cubao</option>
+                <option value="3">Santos Annapolis</option>
+                <option value="7">Ortigas</option>
+                <option value="7">Shaw Blvd.</option>
+                <option value="7">Boni</option>
+                <option value="11">Guadalupe</option>
+                <option value="11">Buendia</option>
+                <option value="11">Ayala</option>
+                <option value="15">Magallanes</option>
+                <option value="15">Taft Ave.</option>
+              </select>
+              
+              <button onclick="calculateFare()" class="btn btn-outline-success" id="compute">Regular Fare</button>
+              <button onclick="discountFare()" class="btn btn-outline-primary" id="compute">Discounted Fare</button>
+
+            <details style="background-color: #8ff2f7; padding: 10px; border: black solid;border-radius: 10px;">
+             <img id="card" src="https://mrt3.com/images/SINGLE.png">
+                <summary>Single-Trip or Beep?</summary>
+                <i> Single Use tickets are good for only the day of purchase, and typically best for infrequent commuters. Beep cards carry load which can be used multiple times to tap on the gates to move to and from the station.</i>
+            </details>
+            </button>
+            <script>
+              
+            </script>
+             </center>
+      </div>
+
+     </div>
+
+      <div class="col-md-4" style="background-color: #04175c; color: white; height: 600px; border: black solid; border-radius: 8px;">
+        <script>  
+        document.write("<h2>Ticket Price:</h2>");
+        </script>
+
+        <br><br>
+        <center>
+            <br>
+            <p id="DisplayAns"></p>
+        </center>
+        <script>
+          //compute for regular rate
+        function calculateFare(){
+          let leavingFrom, goingTo, basefare, distance, fare;
+          leavingFrom = document.getElementById("leavingFrom").value;
+          goingTo = document.getElementById("goingTo").value;
+          basefare = 13;
+          distance = goingTo - leavingFrom;
+          fare = distance + basefare; 
+          
+          //display answer in a paragraph element
+          document.getElementById("DisplayAns").innerHTML = fare + ".00";
+    }
+          //compute for discounted rate
+        function discountFare(){
+          let leavingFrom, goingTo, basefare, distance, disc_fare, fare;
+          leavingFrom = document.getElementById("leavingFrom").value;
+          goingTo = document.getElementById("goingTo").value;
+          basefare = 13;
+          distance = goingTo - leavingFrom;
+          disc_fare = .80 * (distance + basefare) ; 
+          fare = disc_fare.toFixed(2);
+          
+          //display answer in a paragraph element
+          document.getElementById("DisplayAns").innerHTML = fare;
+    }
+      </script>
+        
+      </div>
+    </center>   
+
+  <div class="wrapper">
+    <div class="col-md-4 video-container">
+        <p>"Paano sumakay ng MRT | LRT TRAIN 😲 Dito sa Manila ⁉️" by Miss Paano</p>
+        <iframe width="360" height="315" src="https://www.youtube.com/embed/KwFpvRrwec0?si=2PDa6tFfBvc2gSLq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+  </div>  
+     
+    </div>
+    </div>
+
+    <hr>
+    <br><br>
+     <div class="row" style="background-color:white;">
+      <center>
+      <div class="col-md-6" style="background-color: black; color: white; border: white solid; border-radius: 8px;" id="help">
+        <script>  
+        document.write("<h2>Help</h2>");
+        </script>
+      </div>
+
+      <div class="col-md-4">
+      <p>
+        For any assistance, feel free to contact us.
+        <a href="https://www.facebook.com" target="_blank" class="fa fa-facebook"></a>
+        <a href="https://www.instagram.com" target="_blank" class="fa fa-instagram"></a>
+      </p>
+      <p>
+        <b>Our Office:</b> <i>Armons Building, 142b Kamias Road Corner Anonas Street, Brgy. Loyola Heights,
+        Quezon City, +63(2)9224433</i>
+      </p>
+
+      <br><br>
+      <span>&copy; 2025 Matig-a, Aclaro</span>
+      
+      </div>
+      </center>
+    </div>
+</body>
+</html>
